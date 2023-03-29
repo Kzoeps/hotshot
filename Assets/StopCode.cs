@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StopCode : MonoBehaviour
 {
+    public int index;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,6 @@ public class StopCode : MonoBehaviour
 
     public void OnMouseDown() {
         Debug.Log("Stop");
-        FindObjectOfType<Roulette>().HandleClick(0);
+        FindObjectOfType<Roulette>().HandleClick(index);
     }
 }

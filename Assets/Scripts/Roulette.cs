@@ -14,10 +14,11 @@ public class Roulette : MonoBehaviour
     public bool spin = true;
     public bool slowDown = false;
     public char[] letters;
-    private char[] secondCodes = {'A','D', 'E', 'G', 'H'};
+    private char[] secondCodes = {'P','D', 'E', 'A', 'H'};
     private char[] thirdCodes= {'L','K', 'F', 'R', 'I'};
     private char[] fourthCodes= {'M','B', 'L', 'P', 'Z'};
     private bool[] stopped = {false, false, false, false};
+    private char[] answer = new char[4]; 
     public float delayTime;
     private bool isSlowed = false;
     public int selectedIndex;
@@ -48,7 +49,9 @@ public class Roulette : MonoBehaviour
         while (stopped[index] == false) {
         foreach(char eachCode in codes) {
             code.text = eachCode.ToString();
-            if (index == 0 && stopped[index]) { // check if the code is the first one and if it should stop
+            if (stopped[index]) { // check if the code is the first one and if it should stop
+                answer[index] = eachCode;
+                HandleAllCodeStopped();
                 break; // break out of the loop to stop at the current letter
             }
             if (isSlowed) {
@@ -60,12 +63,26 @@ public class Roulette : MonoBehaviour
     }
     }
 
+    public void HandleAllCodeStopped() {
+        if (stopped[0] && stopped[1] && stopped[2] && stopped[3]) {
+            Debug.Log("All codes stopped");
+            // check if the answer is correct
+            GetComponent<AudioSource>().Play();
+            if (answer[0] == 'W' && answer[1] == 'A' && answer[2] == 'R' && answer[3] == 'P') {
+                Debug.Log("Correct");
+            } else {
+                Debug.Log("Wrong");
+            }
+        }
+    }
+
     public void HandleClick(int index)
     {
         stopped[index] = !stopped[index];
         if (!stopped[index]) { // check if the code should start spinning again
             StartCoroutine(SpinItUp(GetCode(index), GetCodes(index), index)); // restart the coroutine
         }
+        //check if all the codes are stopped
     }
 
     private TextMeshProUGUI GetCode(int index) {
