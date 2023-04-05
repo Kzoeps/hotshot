@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Right : MonoBehaviour
 {
+
+    public Character_Script player;
+
     void OnMouseDown()
     {
-        FindObjectOfType<Character_Script>().SetRight();
-        FindObjectOfType<Character_Script>().StartMoving();
+        player.SetRight();
+        Debug.Log("RIGHT0");
+        player.StartMoving();
+        //FindObjectOfType<Character_Script>().SetRight();
+        //FindObjectOfType<Character_Script>().StartMoving();
     }
 
     private void OnMouseUp() {

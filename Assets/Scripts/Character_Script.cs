@@ -19,6 +19,7 @@ public class Character_Script : MonoBehaviour
         if (isMoving) {
             if (isRight) {
                 transform.position += Vector3.right * speed * Time.deltaTime;
+                Debug.Log("RIGHT2");
             } else {
                 transform.position += Vector3.left * speed * Time.deltaTime;
             }
@@ -43,6 +44,7 @@ public class Character_Script : MonoBehaviour
 
     public void SetRight() {
         isRight = true;
+        Debug.Log("RIGHT1");
     }
     public void SetLeft() {
         isRight = false;
