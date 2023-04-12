@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         }
         animator.SetBool("isMoving", isMoving);
     }
-
+    
     IEnumerator Move(Vector3 targetPos) {
         isMoving = true;
         while (targetPos != transform.position) {

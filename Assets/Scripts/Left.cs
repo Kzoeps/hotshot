@@ -8,12 +8,12 @@ public class Left : MonoBehaviour
     
     void OnMouseDown()
     {
-        FindObjectOfType<Character_Script>().SetLeft();
-        FindObjectOfType<Character_Script>().StartMoving();
+        // FindObjectOfType<Character_Script>().SetLeft();
+        // FindObjectOfType<Character_Script>().StartMoving();
     }
 
     private void OnMouseUp() {
-        FindObjectOfType<Character_Script>().StopMoving();    
+        // FindObjectOfType<Character_Script>().StopMoving();    
     }
     // Start is called before the first frame update
     void Start()
