@@ -5,7 +5,7 @@ using UnityEngine;
 public class BarrackProduction : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public float spawnInterval = 1f;
+    public float spawnInterval = 80f;
     private float nextSpawnTime;
     // Start is called before the first frame update
     void Start()
