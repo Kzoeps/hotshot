@@ -15,4 +15,10 @@ public class sceneSwitcher : MonoBehaviour
 
     }
 
+    public void quitGame()
+    {
+        Application.Quit();
+        Debug.Log("Game is exiting");
+    }
+
 }
