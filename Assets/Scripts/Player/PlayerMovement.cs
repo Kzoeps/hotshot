@@ -6,8 +6,14 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed;
     public bool isMoving;
+    public Joystick joystick;
+    public Rigidbody2D rb;
     private Vector2 input;
     private Animator animator;
+    Vector2 movement; 
+
+    // float horizontalMove = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,28 +23,97 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isMoving) {
-            input.x = Input.GetAxisRaw("Horizontal");
-            input.y = Input.GetAxisRaw("Vertical");
-            if (input != Vector2.zero) {
-                animator.SetFloat("moveX", input.x);
-                animator.SetFloat("moveY", input.y);
-                var targetPos = transform.position;
-                targetPos.x += input.x;
-                targetPos.y += input.y;
-                StartCoroutine(Move(targetPos));
-            }
+        movement.x = joystick.Horizontal;
+        movement.y = joystick.Vertical;
+        if (GetIsMoving()) {
+            animator.SetBool("isMoving", true);
+            SetMotion();
+        } else {
+            animator.SetBool("isMoving", false);
         }
-        animator.SetBool("isMoving", isMoving);
+        
+    }
+
+
+// Because joystick motion ranges from -1 to 1 and is not discrete we need to get whichever direction is moving in the most
+    void SetMotion() {
+        // write a switch case which calls GetHeaviesDirection and sets the animator to the correct direction
+        switch (GetHeaviestDirection()) {
+            case "up":
+                animator.SetFloat("moveX", 0);
+                animator.SetFloat("moveY", 1);
+                break;
+            case "down":
+                animator.SetFloat("moveX", 0);
+                animator.SetFloat("moveY", -1);
+                break;
+            case "left":
+                animator.SetFloat("moveX", -1);
+                animator.SetFloat("moveY", 0);
+                break;
+            case "right":
+                animator.SetFloat("moveX", 1);
+                animator.SetFloat("moveY", 0);
+                break;
+            default:  
+                animator.SetFloat("moveX", 0);
+                animator.SetFloat("moveY", 0);
+                break;
+        }
+    }
+
+    string GetHeaviestDirection() {
+        if (movement.y >= 0.5f) {
+            return "up";
+        } else if (movement.y <= -0.5f) {
+            return "down";
+        } else if (movement.x >= 0.5f) {
+            return "right";
+        } else if (movement.x <= -0.5f) {
+            return "left";
+        } else {
+            return "none";
+        }
+    }
+
+    bool GetIsMoving() {
+        return (movement.y >= 0.5f || movement.y <= -0.5f || movement.x >= 0.5f || movement.x <=-0.5f); 
+    }
+
+    void FixedUpdate() {
+        if (GetIsMoving()) {
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);        
+        }
     }
     
-    IEnumerator Move(Vector3 targetPos) {
-        isMoving = true;
-        while (targetPos != transform.position) {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-            yield return null;
-        }
-        isMoving = false;
-        transform.position = targetPos;
-    }
+    
+    
 }
+
+// UNNNEEDED CODE
+
+// animator.SetFloat("moveX", movement.x);
+        // animator.SetFloat("moveY", movement.y);
+        // if (!isMoving) {
+            
+        //     input.x = Input.GetAxisRaw("Horizontal");
+        //     input.y = Input.GetAxisRaw("Vertical");
+        //     Debug.Log("input: " + input.x);
+        //     if (input != Vector2.zero) {
+        //         animator.SetFloat("moveX", input.x);
+        //         animator.SetFloat("moveY", input.y);
+        //         var targetPos = transform.position;
+        //         targetPos.x += input.x;
+        //         targetPos.y += input.y;
+        //         StartCoroutine(Move(targetPos));
+        //     }
+        // }
+// IEnumerator Move(Vector3 targetPos) {
+//         isMoving = true;
+//         while (targetPos != transform.position) {
+//             transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+//             yield return null;
+//         }
+//         isMoving = false;
+//         transform.position = targetPos;
+//     }
