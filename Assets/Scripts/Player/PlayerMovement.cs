@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    string GetHeaviestDirection() {
+    public string GetHeaviestDirection() {
         if (movement.y >= 0.5f) {
             return "up";
         } else if (movement.y <= -0.5f) {

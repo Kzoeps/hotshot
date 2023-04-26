@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerShots : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public GameObject player;
     private string direction = "right";
     // Start is called before the first frame update
     void Start()
@@ -33,11 +34,12 @@ public class PlayerShots : MonoBehaviour
         }
     }
 
-    void Shoot() {
+    public void Shoot() {
         // add constant since the bullet appears below and behind character
-        Vector2 bulletPos = new Vector2(transform.position.x + 1f, transform.position.y);
+        Vector2 bulletPos = new Vector2(player.transform.position.x + 1f, player.transform.position.y);
         GameObject bullet = Instantiate(bulletPrefab, bulletPos, transform.rotation);
         BulletMovement bulletMvmt = bullet.GetComponent<BulletMovement>();
+        direction = player.GetComponent<PlayerMovement>().GetHeaviestDirection();
         bulletMvmt.direction = direction;
     }
 }
