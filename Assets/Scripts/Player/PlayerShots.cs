@@ -41,7 +41,9 @@ public class PlayerShots : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, bulletPos, transform.rotation);
         BulletMovement bulletMvmt = bullet.GetComponent<BulletMovement>();
         direction = player.GetComponent<PlayerMovement>().GetHeaviestDirection();
-        bulletMvmt.direction = direction;
+        if (direction != "none") {
+            bulletMvmt.direction = direction;
+        }
         laserSound.PlayOneShot(laserSound.clip, 0.5f);
     }
 }
