@@ -5,17 +5,25 @@ using UnityEngine;
 public class BulletMovement : MonoBehaviour
 {
     public string direction = "right";
+    AudioSource explodeSound;
+    public GameObject impact;
     private float moveSpeed = 10f;
     // Start is called before the first frame update
     void Start()
     {
-        
+       explodeSound = GetComponent<AudioSource>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        Instantiate(impact, transform.position, transform.rotation);
+        explodeSound.PlayOneShot(explodeSound.clip, 0.5f);
+        Destroy(gameObject);
     }
 
     void Move(){

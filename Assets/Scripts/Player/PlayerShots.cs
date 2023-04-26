@@ -42,6 +42,6 @@ public class PlayerShots : MonoBehaviour
         BulletMovement bulletMvmt = bullet.GetComponent<BulletMovement>();
         direction = player.GetComponent<PlayerMovement>().GetHeaviestDirection();
         bulletMvmt.direction = direction;
-        laserSound.Play();
+        laserSound.PlayOneShot(laserSound.clip, 0.5f);
     }
 }
