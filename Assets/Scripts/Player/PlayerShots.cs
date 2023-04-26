@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerShots : MonoBehaviour
 {
+    AudioSource laserSound;
     public GameObject bulletPrefab;
     public GameObject player;
     private string direction = "right";
     // Start is called before the first frame update
     void Start()
     {
-        
+        laserSound = GetComponent<AudioSource>();    
     }
 
     // Update is called once per frame
@@ -41,5 +42,6 @@ public class PlayerShots : MonoBehaviour
         BulletMovement bulletMvmt = bullet.GetComponent<BulletMovement>();
         direction = player.GetComponent<PlayerMovement>().GetHeaviestDirection();
         bulletMvmt.direction = direction;
+        laserSound.Play();
     }
 }
