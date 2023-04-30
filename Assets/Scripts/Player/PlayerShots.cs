@@ -7,7 +7,7 @@ public class PlayerShots : MonoBehaviour
     AudioSource laserSound;
     public GameObject bulletPrefab;
     public GameObject player;
-    private string direction = "right";
+    public string direction = "right";
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +40,6 @@ public class PlayerShots : MonoBehaviour
         Vector2 bulletPos = new Vector2(player.transform.position.x + 1f, player.transform.position.y);
         GameObject bullet = Instantiate(bulletPrefab, bulletPos, transform.rotation);
         BulletMovement bulletMvmt = bullet.GetComponent<BulletMovement>();
-        direction = player.GetComponent<PlayerMovement>().GetHeaviestDirection();
         if (direction != "none") {
             bulletMvmt.direction = direction;
         }

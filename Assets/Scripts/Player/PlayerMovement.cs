@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed;
     public bool isMoving;
+    public GameObject playerShots;
     public Joystick joystick;
     public Rigidbody2D rb;
     private Vector2 input;
@@ -28,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
         if (GetIsMoving()) {
             animator.SetBool("isMoving", true);
             SetMotion();
+            if (GetHeaviestDirection() != "none") {
+                SetPlayerShots(GetHeaviestDirection());
+            }
         } else {
             animator.SetBool("isMoving", false);
         }
@@ -35,6 +39,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+    void SetPlayerShots(string direction) {
+        playerShots.GetComponent<PlayerShots>().direction = direction;
+    }
 // Because joystick motion ranges from -1 to 1 and is not discrete we need to get whichever direction is moving in the most
     void SetMotion() {
         // write a switch case which calls GetHeaviesDirection and sets the animator to the correct direction
