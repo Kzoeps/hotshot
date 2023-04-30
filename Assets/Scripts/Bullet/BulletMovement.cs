@@ -21,8 +21,9 @@ public class BulletMovement : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Instantiate(impact, transform.position, transform.rotation);
+        GameObject effect = Instantiate(impact, transform.position, transform.rotation);
         explodeSound.PlayOneShot(explodeSound.clip, 0.5f);
+        Destroy(effect, 2f);
         Destroy(gameObject);
     }
 
