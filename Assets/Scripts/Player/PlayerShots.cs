@@ -37,7 +37,13 @@ public class PlayerShots : MonoBehaviour
 
     public void Shoot() {
         // add constant since the bullet appears below and behind character
-        Vector2 bulletPos = new Vector2(player.transform.position.x + 1f, player.transform.position.y);
+        float offset = 1f;
+        if (direction == "right") {
+            offset = 1f;
+        } else if (direction == "left") {
+            offset = -1f;
+        } 
+        Vector2 bulletPos = new Vector2(player.transform.position.x + offset, player.transform.position.y);
         GameObject bullet = Instantiate(bulletPrefab, bulletPos, transform.rotation);
         BulletMovement bulletMvmt = bullet.GetComponent<BulletMovement>();
         if (direction != "none") {
