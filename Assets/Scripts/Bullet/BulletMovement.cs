@@ -21,7 +21,11 @@ public class BulletMovement : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log(other.name);
         GameObject effect = Instantiate(impact, transform.position, transform.rotation);
+        if( other.tag == "Enemy") {
+            other.GetComponent<EnemyScript>().TakeDamage(20);
+        }
         explodeSound.PlayOneShot(explodeSound.clip, 0.5f);
         Destroy(effect, 2f);
         Destroy(gameObject);
