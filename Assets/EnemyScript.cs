@@ -6,8 +6,11 @@ using Pathfinding;
 public class EnemyScript : MonoBehaviour
 {
     private int health = 100;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
     public AIPath aiPath;
     public Animator animator;
+    public LayerMask playerLayers;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,10 @@ public class EnemyScript : MonoBehaviour
 
     private void Attack() {
         animator.SetTrigger("Attack");
+        Collider2D hitHero = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayers);
+        if(hitHero) {
+            Debug.Log("Hit Hero" + hitHero.name);
+        }
     }
 
     private void HandleMove() {
@@ -32,6 +39,13 @@ public class EnemyScript : MonoBehaviour
             transform.localScale = new Vector3(1f,1f, 1f);
             animator.SetInteger("AnimState", 2); 
         }
+    }
+
+    private void OnDrawGizmosSelected() {
+        if (attackPoint == null) {
+            return;
+        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange); 
     }
 
     public void TakeDamage(int amount) {
