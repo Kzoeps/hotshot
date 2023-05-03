@@ -4778,6 +4778,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 4347942673254218775, guid: 0337ca2e060f81bb69ff98517f2137f8, type: 3}
   spawnInterval: 1
+  cloudPrefab: {fileID: 7732709468932422064, guid: 15e069070e7574226bbbd401501e69d3, type: 3}
+  _audioClip: {fileID: 8300000, guid: 555e5bff118fd421396473051775cd87, type: 3}
 --- !u!212 &1922301627
 SpriteRenderer:
   m_ObjectHideFlags: 0
