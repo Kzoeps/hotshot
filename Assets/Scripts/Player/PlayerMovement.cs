@@ -13,6 +13,7 @@ public class PlayerMovement : Damage
     public Rigidbody2D rb;
     private Vector2 input;
     private Animator animator;
+    string currentDirection = "right";
     Vector2 movement; 
 
     // float horizontalMove = 0f;
@@ -34,6 +35,7 @@ public class PlayerMovement : Damage
             SetMotion();
             if (GetHeaviestDirection() != "none") {
                 SetPlayerShots(GetHeaviestDirection());
+                currentDirection = GetHeaviestDirection();
             }
         } else {
             animator.SetBool("isMoving", false);
@@ -43,11 +45,21 @@ public class PlayerMovement : Damage
 
     void HandleDamage(int amount) {
         owwSound.Play(1);
+        if (currentDirection == "left" || currentDirection == "up" || currentDirection == "down") {
+            animator.SetFloat("moveX", 0);
+        } else {
+            animator.SetFloat("moveX", 1);
+        }
+        animator.SetTrigger("IsHurt");
         TakeDamage(amount);
     }
 
     public override void Die() {
+        animator.SetBool("IsDead", true);
+        GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
         DyingSound.PlayOneShot(DyingSound.clip, 0.5f);
+        Destroy(gameObject, 1f);
     }
 
 

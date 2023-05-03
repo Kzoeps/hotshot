@@ -1078,6 +1078,9 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 1261859181}
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 1261859181}
   moveSpeed: 5
   isMoving: 0
   DyingSound: {fileID: 842401845}
@@ -1310,7 +1313,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2d4a396ab2d3b6379a557496fd623b3d, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2200,6 +2204,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 1366502912}
   m_CullTransparentMesh: 1
 --- !u!1 &1427127992
+--- !u!1 &1427127992
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2209,14 +2214,18 @@ GameObject:
   m_Component:
   - component: {fileID: 1427127996}
   - component: {fileID: 1427127993}
+  - component: {fileID: 1427127993}
   - component: {fileID: 1427127995}
   - component: {fileID: 1427127994}
+  m_Layer: 0
+  m_Name: 
   m_Layer: 0
   m_Name: 
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+  m_IsActive: 0
   m_IsActive: 0
 --- !u!61 &1427127993
 BoxCollider2D:
@@ -5548,7 +5557,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245ea09ddf2139472aabbe5e508fbc04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   enemyPrefab: {fileID: 7924278439001694089, guid: 425cf8ba3d0ae44b7b343d1bd70dd679, type: 3}
+=======
+  enemyPrefab: {fileID: 4347942673254218775, guid: 0337ca2e060f81bb69ff98517f2137f8, type: 3}
   spawnInterval: 2
   cloudPrefab: {fileID: 7732709468932422064, guid: 15e069070e7574226bbbd401501e69d3, type: 3}
   _audioClip: {fileID: 8300000, guid: 555e5bff118fd421396473051775cd87, type: 3}
