@@ -6,6 +6,7 @@ public class PlayerMovement : Damage
 {
     public float moveSpeed;
     public bool isMoving;
+    AudioSource owwSound;
     public GameObject playerShots;
     public Joystick joystick;
     public Rigidbody2D rb;
@@ -39,6 +40,7 @@ public class PlayerMovement : Damage
     }
 
     void HandleDamage(int amount) {
+        owwSound.PlayOneShot(owwSound.clip, 0.5f);
         TakeDamage(amount);
     }
 

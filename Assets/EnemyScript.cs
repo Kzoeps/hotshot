@@ -10,6 +10,7 @@ public class EnemyScript : Damage
     public AIPath aiPath;
     public Animator animator;
     public LayerMask playerLayers;
+    AudioSource youchSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +50,7 @@ public class EnemyScript : Damage
 
     public void HandleDamage() {
         animator.SetTrigger("Hurt");
+        youchSound.PlayOneShot(youchSound.clip, 0.5f);
         TakeDamage(20);
     }
 
