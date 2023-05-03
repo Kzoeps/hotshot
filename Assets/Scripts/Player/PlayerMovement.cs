@@ -19,6 +19,7 @@ public class PlayerMovement : Damage
     // Start is called before the first frame update
     void Start()
     {
+        owwSound = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
 
@@ -40,7 +41,7 @@ public class PlayerMovement : Damage
     }
 
     void HandleDamage(int amount) {
-        owwSound.PlayOneShot(owwSound.clip, 0.5f);
+        owwSound.Play(1);
         TakeDamage(amount);
     }
 

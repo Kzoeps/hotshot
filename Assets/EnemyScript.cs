@@ -5,15 +5,16 @@ using Pathfinding;
 
 public class EnemyScript : Damage 
 {
+    AudioSource hurtSound;
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public AIPath aiPath;
     public Animator animator;
     public LayerMask playerLayers;
-    AudioSource youchSound;
     // Start is called before the first frame update
     void Start()
     {
+        hurtSound = GetComponent<AudioSource>();
         InvokeRepeating("Attack", 2f, 3f);
     }
 
@@ -27,7 +28,7 @@ public class EnemyScript : Damage
         animator.SetTrigger("Attack");
         Collider2D hitHero = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayers);
         if(hitHero) {
-            hitHero.gameObject.SendMessage("TakeDamage", 10);
+            hitHero.gameObject.SendMessage("HandleDamage", 10);
         }
     }
 
@@ -50,7 +51,7 @@ public class EnemyScript : Damage
 
     public void HandleDamage() {
         animator.SetTrigger("Hurt");
-        youchSound.PlayOneShot(youchSound.clip, 0.5f);
+        hurtSound.PlayOneShot(hurtSound.clip, 0.5f);
         TakeDamage(20);
     }
 
@@ -59,6 +60,6 @@ public class EnemyScript : Damage
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         this.enabled = false;
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 0.5f);
     }
 }
