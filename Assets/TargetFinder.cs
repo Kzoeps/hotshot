@@ -16,8 +16,6 @@ public class TargetFinder : MonoBehaviour
     }
     public void TargetPlayer() {
         target = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log("Finding target");
-        Debug.Log(target);
         aIDestinationSetter.target = target.transform;
     }
     // Update is called once per frame
