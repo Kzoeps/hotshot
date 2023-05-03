@@ -16,6 +16,7 @@ public abstract class Damage : MonoBehaviour
 
     public void TakeDamage(int amount) {
         health -= amount;
+        Debug.Log("Damage taken" + health);
         healthBar.SetHealth(health);
         if (health <= 0) {
             Die();
