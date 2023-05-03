@@ -11,6 +11,7 @@ public class EnemyScript : Damage
     public AIPath aiPath;
     public Animator animator;
     public LayerMask playerLayers;
+    public AudioSource DyingSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +58,7 @@ public class EnemyScript : Damage
 
     public override void Die() {
         animator.SetBool("IsDead", true);
+        DyingSound.PlayOneShot(DyingSound.clip, 0.5f);
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         this.enabled = false;
