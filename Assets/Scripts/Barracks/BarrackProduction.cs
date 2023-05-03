@@ -9,7 +9,6 @@ public class BarrackProduction : MonoBehaviour
     private float nextSpawnTime;
     public GameObject cloudPrefab;
     private GameObject cloud;
-    private float timer = 0;
     public AudioClip _audioClip;
 
     // Start is called before the first frame update

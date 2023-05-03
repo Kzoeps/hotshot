@@ -7,6 +7,7 @@ public class PlayerMovement : Damage
     public float moveSpeed;
     public bool isMoving;
     AudioSource owwSound;
+    public AudioSource DyingSound;
     public GameObject playerShots;
     public Joystick joystick;
     public Rigidbody2D rb;
@@ -46,7 +47,7 @@ public class PlayerMovement : Damage
     }
 
     public override void Die() {
-        Debug.Log("Player Died");
+        DyingSound.PlayOneShot(DyingSound.clip, 0.5f);
     }
 
 
