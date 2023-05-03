@@ -26,7 +26,7 @@ public class EnemyScript : Damage
         animator.SetTrigger("Attack");
         Collider2D hitHero = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayers);
         if(hitHero) {
-            Debug.Log("Hit Hero" + hitHero.name);
+            hitHero.gameObject.SendMessage("TakeDamage", 10);
         }
     }
 
@@ -48,8 +48,8 @@ public class EnemyScript : Damage
     }
 
     public void HandleDamage() {
-        TakeDamage(20);
         animator.SetTrigger("Hurt");
+        TakeDamage(20);
     }
 
     public override void Die() {

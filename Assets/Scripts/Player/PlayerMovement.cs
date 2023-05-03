@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Damage 
 {
     public float moveSpeed;
     public bool isMoving;
@@ -36,6 +36,14 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isMoving", false);
         }
         
+    }
+
+    void HandleDamage(int amount) {
+        TakeDamage(amount);
+    }
+
+    public override void Die() {
+        Debug.Log("Player Died");
     }
 
 

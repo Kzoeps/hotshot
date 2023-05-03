@@ -24,7 +24,7 @@ public class BulletMovement : MonoBehaviour
         Debug.Log(other.name);
         GameObject effect = Instantiate(impact, transform.position, transform.rotation);
         if( other.tag == "Enemy") {
-            other.GetComponent<EnemyScript>().TakeDamage(20);
+            other.GetComponent<EnemyScript>().HandleDamage();
         }
         explodeSound.PlayOneShot(explodeSound.clip, 0.5f);
         Destroy(effect, 2f);
