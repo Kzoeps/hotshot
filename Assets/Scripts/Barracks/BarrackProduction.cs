@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarrackProduction : MonoBehaviour
+public class BarrackProduction : Damage
 {
     public GameObject enemyPrefab;
     public float spawnInterval = 1000000f;
@@ -22,6 +22,15 @@ public class BarrackProduction : MonoBehaviour
     void Update()
     {
        HandleSpawning();
+    }
+
+    public override void Die()
+    {
+
+    }
+
+    public void HandleDamage() {
+        TakeDamage(5);
     }
 
     private void HandleSpawning()

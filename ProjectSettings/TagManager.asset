@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TreasureChest
   - Enemy
+  - Farm
   layers:
   - Default
   - TransparentFX

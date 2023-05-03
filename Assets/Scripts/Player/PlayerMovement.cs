@@ -62,6 +62,7 @@ public class PlayerMovement : Damage
         Destroy(gameObject, 1f);
     }
 
+    
 
     void SetPlayerShots(string direction) {
         playerShots.GetComponent<PlayerShots>().direction = direction;

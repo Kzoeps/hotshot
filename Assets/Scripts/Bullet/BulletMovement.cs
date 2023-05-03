@@ -23,8 +23,9 @@ public class BulletMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         Debug.Log(other.name);
         GameObject effect = Instantiate(impact, transform.position, transform.rotation);
-        if( other.tag == "Enemy") {
-            other.GetComponent<EnemyScript>().HandleDamage();
+        if( other.tag == "Enemy" || other.tag == "Farm") {
+            other.gameObject.SendMessage("HandleDamage");
+            // other.GetComponent<EnemyScript>().HandleDamage();
         }
         explodeSound.PlayOneShot(explodeSound.clip, 0.5f);
         Destroy(effect, 2f);
