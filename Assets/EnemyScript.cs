@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class EnemyScript : MonoBehaviour
+public class EnemyScript : Damage 
 {
-    private int health = 100;
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public AIPath aiPath;
@@ -48,15 +47,12 @@ public class EnemyScript : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange); 
     }
 
-    public void TakeDamage(int amount) {
-        health -= amount;
+    public void HandleDamage() {
+        TakeDamage(20);
         animator.SetTrigger("Hurt");
-        if (health <= 0) {
-            Die();
-        }
     }
 
-    public void Die() {
+    public override void Die() {
         animator.SetBool("IsDead", true);
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
