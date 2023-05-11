@@ -12,6 +12,7 @@ public class EnemyScript : Damage
     public Animator animator;
     public LayerMask playerLayers;
     public AudioSource DyingSound;
+    private bool isInRange = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +28,29 @@ public class EnemyScript : Damage
 
     private void Attack() {
         animator.SetTrigger("Attack");
-        Collider2D hitHero = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayers);
-        if(hitHero) {
-            hitHero.gameObject.SendMessage("HandleDamage", 10);
+        if (isInRange) {
+            GameObject player = GameObject.Find("Hero");
+            player.gameObject.SendMessage("HandleDamage", 10);
+        }
+        // Collider2D hitHero = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayers);
+        // if(hitHero) {
+            // Debug.Log(hitHero+"THis IS HITO hEOBj");
+            // hitHero.gameObject.SendMessage("HandleDamage", 10);
+        // }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("OnTriggerEnter2D");
+        if (other.gameObject.CompareTag("Player")) {
+            isInRange = true;
+            Debug.Log("Player is in range");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Player")) {
+            isInRange = false;
+            Debug.Log("Player is out of range");
         }
     }
 
