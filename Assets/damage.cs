@@ -16,7 +16,10 @@ public class damage : MonoBehaviour
 
     
     void Update()
-    {
+    {   
+        if(Input.GetKeyDown("space")){
+            TakeDamage(100);
+        }
     }
     public void TakeDamage(int damage)
     {

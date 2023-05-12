@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class BarrackProduction : Damage
 {
     public GameObject enemyPrefab;
@@ -18,6 +18,10 @@ public class BarrackProduction : Damage
        Debug.Log(Time.time + " " + nextSpawnTime);
     }
 
+    private IEnumerator waiter(){
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("GameWon");
+    }
     // Update is called once per frame
     void Update()
     {
@@ -26,6 +30,7 @@ public class BarrackProduction : Damage
 
     public override void Die()
     {
+        StartCoroutine(waiter());
 
     }
 
