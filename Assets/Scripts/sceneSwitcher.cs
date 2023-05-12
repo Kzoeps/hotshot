@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class sceneSwitcher : MonoBehaviour
 {
     public void nextScene() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("test-scene");
 
     }
 
@@ -16,11 +16,11 @@ public class sceneSwitcher : MonoBehaviour
     }
 
     public void goToTutorial() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene("tutorial");
     }
     public void toMenuFromTutorial()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+        SceneManager.LoadScene("menuScene");
 
     }
 
