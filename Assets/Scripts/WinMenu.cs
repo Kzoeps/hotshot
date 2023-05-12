@@ -6,14 +6,13 @@ using UnityEngine.SceneManagement;
 public class WinMenu : MonoBehaviour
 {
     public void playAgain() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+        SceneManager.LoadScene("test-scene");
 
     }
 
     public void mainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 4);
-
+        SceneManager.LoadScene("menuScene");
     }
 
 

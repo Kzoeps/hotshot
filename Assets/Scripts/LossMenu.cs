@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 public class LossMenu : MonoBehaviour
 {
     public void retryAgain() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("test-scene");
 
     }
 
     public void mainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
+        SceneManager.LoadScene("menuScene");
 
     }
 
