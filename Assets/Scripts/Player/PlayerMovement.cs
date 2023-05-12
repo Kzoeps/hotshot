@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : Damage 
 {
@@ -41,6 +42,7 @@ public class PlayerMovement : Damage
             animator.SetBool("isMoving", false);
         }
         
+        
     }
 
     void HandleDamage(int amount) {
@@ -57,9 +59,13 @@ public class PlayerMovement : Damage
     public override void Die() {
         animator.SetBool("IsDead", true);
         GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
+        //this.enabled = false;
         DyingSound.PlayOneShot(DyingSound.clip, 0.5f);
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, 4f);
+        StartCoroutine(waiter());
+        
+        
+
     }
 
     
@@ -108,6 +114,13 @@ public class PlayerMovement : Damage
         }
     }
 
+    private IEnumerator waiter(){
+        Debug.Log("hiiiiii");
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("PostGame");
+        
+        
+    }
     bool GetIsMoving() {
         return (movement.y >= 0.5f || movement.y <= -0.5f || movement.x >= 0.5f || movement.x <=-0.5f); 
     }
