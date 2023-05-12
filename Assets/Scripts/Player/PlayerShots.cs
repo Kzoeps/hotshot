@@ -39,11 +39,11 @@ public class PlayerShots : MonoBehaviour
         // add constant since the bullet appears below and behind character
         float offset = 1f;
         if (direction == "right" || direction == "up") {
-            offset = 1f;
+            offset = 0.5f;
         } else if (direction == "left" || direction == "down") {
-            offset = -1f;
+            offset = -0.5f;
         } 
-        Vector2 bulletPos = new Vector2(player.transform.position.x, player.transform.position.y);
+        Vector2 bulletPos = new Vector2(player.transform.position.x , player.transform.position.y);
         if (direction == "up" || direction == "down") {
             bulletPos = new Vector2(player.transform.position.x, player.transform.position.y + offset);
         } else {
