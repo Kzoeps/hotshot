@@ -28,15 +28,15 @@ public class EnemyScript : Damage
 
     private void Attack() {
         animator.SetTrigger("Attack");
-        if (isInRange) {
-            GameObject player = GameObject.Find("Hero");
-            player.gameObject.SendMessage("HandleDamage", 10);
-        }
-        // Collider2D hitHero = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayers);
-        // if(hitHero) {
-            // Debug.Log(hitHero+"THis IS HITO hEOBj");
-            // hitHero.gameObject.SendMessage("HandleDamage", 10);
+        // if (isInRange) {
+        //     GameObject player = GameObject.Find("Hero");
+        //     player.gameObject.SendMessage("HandleDamage", 10);
         // }
+        Collider2D hitHero = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayers);
+        if(hitHero) {
+            Debug.Log(hitHero+"THis IS HITO hEOBj");
+            hitHero.gameObject.SendMessage("HandleDamage", 10);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
