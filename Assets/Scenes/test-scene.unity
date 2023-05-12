@@ -1595,7 +1595,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0022368915, y: -0.003242582}
+  m_Offset: {x: -0.0008666776, y: -0.003242582}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1606,7 +1606,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.19343707, y: 0.19344074}
+  m_Size: {x: 0.11481198, y: 0.19344074}
   m_EdgeRadius: 0
 --- !u!82 &842401844
 AudioSource:
@@ -7845,7 +7845,7 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 1712887257}
   enemyPrefab: {fileID: 4714416106722180493, guid: 2df062e5f1ad34b66a97b5017be8cc51, type: 3}
-  spawnInterval: 4
+  spawnInterval: 6
   cloudPrefab: {fileID: 7732709468932422064, guid: 15e069070e7574226bbbd401501e69d3, type: 3}
   _audioClip: {fileID: 8300000, guid: 555e5bff118fd421396473051775cd87, type: 3}
   winSound: {fileID: 1922301630}
