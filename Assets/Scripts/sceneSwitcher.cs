@@ -15,6 +15,16 @@ public class sceneSwitcher : MonoBehaviour
 
     }
 
+    public void goToTutorial() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+    }
+    public void toMenuFromTutorial()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+
+    }
+
+
     public void quitGame()
     {
         Application.Quit();
