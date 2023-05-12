@@ -8,6 +8,7 @@ public class PlayerMovement : Damage
     public float moveSpeed;
     public bool isMoving;
     AudioSource owwSound;
+    public AudioSource LoseSound;
     public AudioSource DyingSound;
     public GameObject playerShots;
     public Joystick joystick;
@@ -61,11 +62,9 @@ public class PlayerMovement : Damage
         GetComponent<Collider2D>().enabled = false;
         //this.enabled = false;
         DyingSound.PlayOneShot(DyingSound.clip, 0.5f);
+        LoseSound.PlayOneShot(LoseSound.clip, 2f);
         Destroy(gameObject, 4f);
         StartCoroutine(waiter());
-        
-        
-
     }
 
     
@@ -115,11 +114,8 @@ public class PlayerMovement : Damage
     }
 
     private IEnumerator waiter(){
-        Debug.Log("hiiiiii");
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene("PostGame");
-        
-        
     }
     bool GetIsMoving() {
         return (movement.y >= 0.5f || movement.y <= -0.5f || movement.x >= 0.5f || movement.x <=-0.5f); 
