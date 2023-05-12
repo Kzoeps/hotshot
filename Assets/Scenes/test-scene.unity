@@ -7845,7 +7845,7 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 1712887257}
   enemyPrefab: {fileID: 4714416106722180493, guid: 2df062e5f1ad34b66a97b5017be8cc51, type: 3}
-  spawnInterval: 30
+  spawnInterval: 4
   cloudPrefab: {fileID: 7732709468932422064, guid: 15e069070e7574226bbbd401501e69d3, type: 3}
   _audioClip: {fileID: 8300000, guid: 555e5bff118fd421396473051775cd87, type: 3}
   winSound: {fileID: 1922301630}
