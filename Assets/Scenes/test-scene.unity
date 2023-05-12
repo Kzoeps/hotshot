@@ -7941,11 +7941,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4714416106722180488, guid: 2df062e5f1ad34b66a97b5017be8cc51, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.32
+      value: 3.06
       objectReference: {fileID: 0}
     - target: {fileID: 4714416106722180488, guid: 2df062e5f1ad34b66a97b5017be8cc51, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.24
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 4714416106722180488, guid: 2df062e5f1ad34b66a97b5017be8cc51, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7982,22 +7982,6 @@ PrefabInstance:
     - target: {fileID: 4714416106722180493, guid: 2df062e5f1ad34b66a97b5017be8cc51, type: 3}
       propertyPath: m_Name
       value: Enemy 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714416107814920964, guid: 2df062e5f1ad34b66a97b5017be8cc51, type: 3}
-      propertyPath: attackRange
-      value: 0.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714416107814920964, guid: 2df062e5f1ad34b66a97b5017be8cc51, type: 3}
-      propertyPath: playerLayers.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714416107814920967, guid: 2df062e5f1ad34b66a97b5017be8cc51, type: 3}
-      propertyPath: m_Mass
-      value: 0.0001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714416107814920968, guid: 2df062e5f1ad34b66a97b5017be8cc51, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9023532137061763587, guid: 2df062e5f1ad34b66a97b5017be8cc51, type: 3}
       propertyPath: m_AnchorMax.x
