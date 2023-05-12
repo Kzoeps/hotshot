@@ -10,6 +10,7 @@ public class BarrackProduction : Damage
     public GameObject cloudPrefab;
     private GameObject cloud;
     public AudioClip _audioClip;
+    public AudioSource winSound;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,7 @@ public class BarrackProduction : Damage
     public override void Die()
     {
         StartCoroutine(waiter());
-
+        winSound.PlayOneShot(winSound.clip, 0.5f);
     }
 
     public void HandleDamage() {
